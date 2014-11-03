@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Board {
 
-	private static final int SIZE = 8;
+	private static final int SIZE = 4;
 	
 	private Cell[][] cells;
 	
@@ -66,7 +66,7 @@ public class Board {
 				modulo = turn.value % cell.getValue();
 				gainedPoints += modulo;
 				if((modulo == 0) && changeState)
-					cell.flush();				
+					cell.divide(turn.value);				
 			}
 		
 		return gainedPoints;

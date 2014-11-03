@@ -13,7 +13,9 @@ public class Cell {
 	
 	public boolean isFilled() { return filled; }
 	
-	public void flush() { filled = false; }
+	public void divide(int dividend) {
+		value = dividend / value;
+	}
 	
 	public int getValue() throws CellIsEmptyException {
 		try {

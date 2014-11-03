@@ -36,9 +36,10 @@ public class GameManager {
 		while(!B.endOfGame()) {
 			points1 += B.fillCell(P1.nextMove(B), true);
 			printState(B.getCells(), PW);
-			points2 += B.fillCell(P2.nextMove(B), true);
+			points2 += B.fillCell(P1.nextMove(B), true);
 			printState(B.getCells(), PW);
 			PW.println("P1:  " + points1 + "\tP2:  " + points2);
+			PW.println();
 		}
 		PW.close();
 		System.out.print("OK");

@@ -6,7 +6,8 @@ public class FirstPlayer implements Move{
 	@Override
 	public Turn nextMove(Board board) throws CellIsFilledException, CellIsEmptyException, IncorrectCellValueException {
 		Cell[][] boardCells = board.getCells();
-		int maxPoints = 0;
+		int maxPoints = 0, currentPoints;
+		int minValue = Cell.MAX_VALUE;
 		Turn turn = new Turn(0,0,0);
 		Turn bestTurn = new Turn(0,0,0);
 		for(int rowIndex = 0; rowIndex < boardCells.length; rowIndex++)
@@ -14,8 +15,14 @@ public class FirstPlayer implements Move{
 				if(!boardCells[rowIndex][columnIndex].isFilled())
 					for(int currentCellValue = Cell.MIN_VALUE; currentCellValue <= Cell.MAX_VALUE; currentCellValue++) {
 						turn.setTurn(rowIndex, columnIndex, currentCellValue);
-						if(maxPoints < board.fillCell(turn, false));
+						currentPoints = board.fillCell(turn, false);
+						if(maxPoints < currentPoints)
+						{
 							bestTurn.setTurn(rowIndex, columnIndex, currentCellValue);
+							maxPoints = currentPoints;
+							minValue = currentCellValue;
+						}
+							
 					}
 			}
 				
